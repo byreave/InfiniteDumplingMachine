@@ -5,7 +5,7 @@ using UnityEngine;
 public class PoopControl : MonoBehaviour
 {
     float PoopingTime = 2.0f;
-    float MovingSpeed = 1.0f;
+    float MovingSpeed = 0.5f;
     bool isPooping = true;
     float PoopingTimer = 0.0f;
     // Start is called before the first frame update

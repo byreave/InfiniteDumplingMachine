@@ -7,6 +7,8 @@ public class CharacterMovement : MonoBehaviour
     public float HorizontalSpeed = 2.0f;
     public float VerticalSpeed = 2.0f;
     public GameObject PoopObject;
+    public AudioClip PoopSFX;
+    public AudioClip EatSFX;
     float screenWidth, screenHeight;
     float characterWidth, characterHeight;
     int MaxPoopCount = 10;
@@ -50,6 +52,7 @@ public class CharacterMovement : MonoBehaviour
             collision.gameObject.GetComponent<DumplingControl>().Die();
             GameManager.instance.ConsumeDumpling();
             PoopUp();
+            GetComponent<AudioSource>().PlayOneShot(EatSFX);
         }
     }
     void PoopUp()
@@ -71,7 +74,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Poop()
     {
-        Debug.Log("POPOP");
+        GetComponent<AudioSource>().PlayOneShot(PoopSFX);
         isPooping = true;
         GetComponent<Animator>().SetBool("Pooping", true);
         GetComponent<BoxCollider2D>().enabled = false;

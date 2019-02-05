@@ -38,11 +38,11 @@ public class GameManager : MonoBehaviour
         switch(level)
         {
             case 0:
-                if (PoopCount >= 2)
+                if (PoopCount >= 1)
                     LevelUp();
                 break;
             case 1:
-                if (PoopCount >= 4)
+                if (PoopCount >= 3)
                     LevelUp();
                 break;
             case 2:
@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            Application.Quit();
     }
 
     public void ConsumeDumpling ()
@@ -70,6 +73,7 @@ public class GameManager : MonoBehaviour
     }
     void LevelUp()
     {
+        GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip);
         level++;
         Grass.GetComponent<GrassControl>().LevelUp();
         Pots.GetComponent<InfinitePots>().LevelUp();

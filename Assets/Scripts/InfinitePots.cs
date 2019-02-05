@@ -40,7 +40,7 @@ public class InfinitePots : MonoBehaviour
     {
         foreach(Transform t in DumplingSpawn)
         {
-            if (Random.Range(0, 1.0f) <= BaseSpawnProb * level)
+            if (t != gameObject.transform && Random.Range(0, 1.0f) <= BaseSpawnProb * level)
             {
                 Instantiate(Dumpling, t.position, t.rotation);
             }
